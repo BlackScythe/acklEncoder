@@ -29,8 +29,8 @@ postEncoded = function(guid, algorithm, encoded) {
 			'encodedValue':encoded,
 			'emailAddress':'gjherrera.i@gmail.com',
 			'name': 'Nicolas Jalil',
-			'webhookUrl':'http://temporal.com',
-			'repourl':'https://temporal.com'
+			'webhookUrl':'https://ackl-encoder.herokuapp.com/secret',
+			'repourl':'https://github.com/BlackScythe/acklEncoder'
 		}
 	}, function	(error, response){
 		if (error) {
