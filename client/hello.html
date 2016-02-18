@@ -7,12 +7,22 @@
 		</div>
 		<div class="row">			
 			<div class = "col s12 center-align">
-				<h3>{{#if displaySecret}}	
-					The big secret is: {{displaySecret}}
-				{{else}}
-					Um...well...this text should be a secret :C
-				{{/if}}
-				</h3>				
+				<h3>{{#if displaySecret}}
+						The big secret is: {{displaySecret}}
+					{{else}}
+						Um...well...this text should be a secret :C
+					{{/if}}
+				</h3>			
+			</div>
+		</div>
+		<div class="row {{previousVisible}}">			
+			<div class = "col s12 center-align">
+				<h6>{{#if previousSecret}}
+						The previous secret was: {{previousSecret}}
+					{{else}}
+						Seems there's only 1 secret for now :C
+					{{/if}}
+				</h6>			
 			</div>
 		</div>
 		<!--<div class="row">
