@@ -1,12 +1,14 @@
 Meteor.subscribe('secrets');
 
 Template.hello.helpers({
-	'displaySecret' : function (){
-		if (secrets.findOne({})) {
-			Session.set('secret',secrets.findOne({}).secret);
-		}
+	'displaySecret' : function (){		
 		Meteor.call('clearSecrets');
-		return Session.get('secret');
+		if (secrets.find().fetch().length > 0 ) {
+			secret = secrets.find({},{sort:{date:-1}}).fetch();
+			return secret[0].secret;
+		}else{
+			return false;
+		}
 	}
 });
 

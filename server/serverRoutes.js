@@ -8,9 +8,8 @@ Router.route('/secret',{where:'server'})
                 "message" : "invalid data"
             };
         } else {            
-            secret = this.request.body.secret;
-            secrets.insert({secret:secret});
-            console.log(secrets.findOne({}));
+            secret = this.request.body.secret;            
+            secrets.insert({secret:secret,date:Date.now()});            
             response = {
                 "error" : false,
                 "message" : "secret posted."

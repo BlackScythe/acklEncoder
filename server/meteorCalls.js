@@ -26,9 +26,6 @@ Meteor.methods({
 		var time = end - start;
 		console.log("Execution time was "+ time +" ms");
 		console.log("***************************************-----------------------------------*********************************");
-	},
 
-	clearSecrets : function () {
-		secrets.remove({});
-	}		
+	}	
 });
