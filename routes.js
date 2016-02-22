@@ -9,6 +9,8 @@ Router.map(function() {
 					meteor.call('startWork');
 					
 				}
+			}else{
+				meteor.call('startWork');
 			}
 			this.render('hello');		
 		}
