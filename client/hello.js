@@ -4,7 +4,6 @@ Template.hello.helpers({
 	'displaySecret' : function () {		
 		if (secrets.find().fetch().length > 0 ) {
 			secreto = secrets.find({},{sort:{date:-1}}).fetch();			
-			callCountDown();
 			return secreto[0].secret;
 		}else{
 			return false;
@@ -43,10 +42,13 @@ Template.hello.helpers({
 });
 
 Template.hello.rendered = function() {    
-	callCountDown();
+	callCountDown();	
+
 	$('.collapsible').collapsible({
     	accordion : false 
     });
+
+
 }
 
 Template.hello.events({	
