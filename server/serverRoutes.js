@@ -9,7 +9,7 @@ Router.route('/secret',{where:'server'})
             };
         } else {            
             secret = this.request.body.secret;            
-            secrets.insert({secret:secret,date:Date.now()});            
+            secrets.insert({secret:secret, date:Date.now()});            
             response = {
                 "error" : false,
                 "message" : "secret posted."

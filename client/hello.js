@@ -3,8 +3,9 @@ Meteor.subscribe('secrets');
 Template.hello.helpers({
 	'displaySecret' : function () {		
 		if (secrets.find().fetch().length > 0 ) {
-			secret = secrets.find({},{sort:{date:-1}}).fetch();
-			return secret[0].secret;
+			secreto = secrets.find({},{sort:{date:-1}}).fetch();			
+			callCountDown();
+			return secreto[0].secret;
 		}else{
 			return false;
 		}
@@ -26,10 +27,23 @@ Template.hello.helpers({
 			return "hide";
 		}
 		return "";
+	},
+	'timerVisible' : function () {
+		if (secrets.find().fetch().length > 0) {
+			secret = secrets.find({},{sort:{date:-1}}).fetch()[0];		
+			minutes = parseInt((secret.date+3600000 - Date.now())/1000/60);			
+			seconds = (secret.date+3600000 - Date.now())/1000/60%1;
+			seconds = parseInt(seconds * 60);
+			if (minutes >= 0&& seconds >= 0) {    		
+			}else{
+				return "hide";
+			}
+		}
 	}
 });
 
-Template.hello.rendered = function() {
+Template.hello.rendered = function() {    
+	callCountDown();
 	$('.collapsible').collapsible({
     	accordion : false 
     });
