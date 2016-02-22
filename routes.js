@@ -1,7 +1,7 @@
 Router.map(function() {
 	this.route('hello', {
 		path: '/',
-		onBeforeAction: function (pause){
+		onBeforeAction: function (){
 			Session.set('secretSize', secrets.find().fetch().length);
 			if (Session.get('secretSize')>0) {
 				secret0 = secrets.find({},{sort:{date:-1}}).fetch()[0]; 
@@ -14,11 +14,7 @@ Router.map(function() {
         			Meteor.call('startWork');
 					
 				}
-			}
-			if (Session.get('secretSize')<=0) {
-				
-				Meteor.call('startWork');
-			}
+			}			
 			this.render('hello');		
 		}
 	})

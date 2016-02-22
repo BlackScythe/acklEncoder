@@ -7,7 +7,7 @@ Template.hello.helpers({
 			return secreto[0].secret;
 		}else{
 			return false;
-		}
+		}		
 	},
 	'previousSecret' : function () {
 		if (secrets.find().fetch().length > 0 ) {
@@ -22,33 +22,35 @@ Template.hello.helpers({
 		}
 	},
 	'previousVisible' : function () {
-		if (secrets.find().fetch().length == 0) {
+		if (secrets.find().fetch().length <= 0) {
+			
 			return "hide";
 		}
 		return "";
 	},
 	'timerVisible' : function () {
-		if (secrets.find().fetch().length > 0) {
-			secret = secrets.find({},{sort:{date:-1}}).fetch()[0];		
-			minutes = parseInt((secret.date+3600000 - Date.now())/1000/60);			
+		if (secrets.find().fetch().length <= 0) {
+			return "hide";
+		}
+		if (secrets.find().fetch().length>0){
+			secret = secrets.find({},{sort:{date:-1}}).fetch()[0];
+			minutes = parseInt((secret.date+3600000 - Date.now())/1000/60);
 			seconds = (secret.date+3600000 - Date.now())/1000/60%1;
-			seconds = parseInt(seconds * 60);
-			if (minutes >= 0&& seconds >= 0) {    		
-			}else{
-				return "hide";
-			}
+        	seconds = parseInt(seconds * 60);
+        	if (minutes <= 0 && seconds <= 0) {      
+            	return "hide";
+        	}
 		}
 	}
 });
 
-Template.hello.rendered = function() {    
-	callCountDown();	
-
+Template.hello.rendered = function() {
 	$('.collapsible').collapsible({
     	accordion : false 
     });
-
-
+    this.autorun(function () {		
+		callCountDown();
+    });
 }
 
 Template.hello.events({	
